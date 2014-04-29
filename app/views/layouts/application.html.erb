@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>SocialThingy</title>
+  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+<%= render "layouts/notices" %>
+<%= render "layouts/errors" %>
+
+<% if logged_in? %>
+  <%= "Welcome #{current_user.email}"  %>
+  <%= button_to "Logout", session_url, method: :delete %>
+<% else %>
+  <%= button_to "Login", new_session_url, method: :get %>
+<% end %>
+
+
+<%= yield %>
+
+</body>
+</html>

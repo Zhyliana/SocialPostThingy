@@ -1,0 +1,21 @@
+<form action="<%= user_posts_url(current_user) %>" method="POST">
+  <%= auth_token_helper %>
+
+  <label>Post Title
+    <input type="text" name="post[body]">
+  </label>
+  <br>
+
+  <% 3.times do |i| %>
+    <p>
+      <label>Link
+        <input type="text" name="link[<%= i %>][title]">
+      </label>
+      <label>URL
+        <input type="text" name="link[<%= i %>][url]">
+      </label>
+    </p>
+  <% end %>
+
+  <p><input type="submit" value="Submit"></p>
+</form>

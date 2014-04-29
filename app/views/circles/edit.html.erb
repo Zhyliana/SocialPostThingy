@@ -1,0 +1,18 @@
+<form action="<%= circle_url %>" method="POST">
+  <input type="hidden" name="_method" value="PATCH">
+  <%= auth_token_helper %>
+
+    Circle Name:<br>
+    <input type="text" name="circle[name]" value="<%= @circle.name %>"><br>
+    <input type="hidden" name="circle[friend_ids][]" value="">
+    <% @users.each do |user| %>
+      <label>
+        <input
+        type="checkbox"
+        name="circle[friend_ids][]"
+        value="<%= user.id %><%= "checked" if @circle.friends.include?(user) %>"> <%= user.email %><br>
+      </label>
+    <% end %>
+
+  <p><input type="submit" value="Update Circle"></p>
+</form>

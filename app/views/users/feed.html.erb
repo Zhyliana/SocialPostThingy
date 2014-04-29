@@ -1,0 +1,6 @@
+<% current_user.friends.each do |friend| %>
+  <% friend.posts.each do |post| %>
+    <b><%= post.author.email %></b>-<br>
+    <%= post.body %><br>
+  <% end %>
+<% end %>
