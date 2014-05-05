@@ -15,15 +15,13 @@ class User < ActiveRecord::Base
 
   before_validation :ensure_session_token
 
-  validates_presence_of :email, :password_digest, :session_token
+  validates :email, :password_digest, :session_token, precence: true
   validates :email, uniqueness: true
   validates :password, length: { minimum: 2, allow_nil: true }
 
   has_many :circles
-  has_many :circle_memberships, class_name: "CircleMembership",
-      foreign_key: :user_id, primary_key: :id
+  has_many :circle_memberships, class_name: "CircleMembership", foreign_key: :user_id
   has_many :friends, through: :circles, source: :friends
-
   has_many :posts, class_name: "Post", foreign_key: :author_id, inverse_of: :author
 
   def password=(plain_text)

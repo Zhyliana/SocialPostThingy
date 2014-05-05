@@ -12,12 +12,9 @@
 class Post < ActiveRecord::Base
   validates :body, :author_id, presence: true
 
-  belongs_to :author, class_name: "User", foreign_key: :author_id,
-  inverse_of: :posts
-
+  belongs_to :author, class_name: "User", foreign_key: :author_id, inverse_of: :posts
   has_many :post_shares
   has_many :shared_circles, through: :post_shares, source: :circle
-
   has_many :links, inverse_of: :post
 
 

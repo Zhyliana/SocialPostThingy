@@ -13,7 +13,6 @@ class CircleMembership < ActiveRecord::Base
 
   belongs_to :friend, class_name: "User", foreign_key: :user_id
   belongs_to :circle
-
   has_one :owner, through: :circle, source: :user
 
 end

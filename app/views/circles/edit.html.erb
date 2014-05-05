@@ -10,7 +10,8 @@
         <input
         type="checkbox"
         name="circle[friend_ids][]"
-        value="<%= user.id %><%= "checked" if @circle.friends.include?(user) %>"> <%= user.email %><br>
+        value="<%= user.id %><%= "checked" if @circle.friends.include?(user) %>"> 
+        <%= user.email %><br>
       </label>
     <% end %>
 

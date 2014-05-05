@@ -14,6 +14,5 @@ class PostShare < ActiveRecord::Base
 
   belongs_to :circle
   belongs_to :post
-
   has_one :owner, through: :post, source: :author
 end
